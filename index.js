@@ -5,10 +5,36 @@
 // Hint: Select the <ul> element with the id "astronaut-list"
 // Hint: Loop through the data.people array and create <li> elements for each astronaut's name
 // Hint: Append the <li> elements to the <ul> element
+function displayAstronauts(data){
+    const astronautList = document.getElementById("astronaut-list");
+
+    //Loop through the data.people array.
+    data.people.forEach((person) => {
+        //create <li> elements for each astronaut's name
+        const listItem = document.createElement('li');
+        listItem.textContent = person.name;
+        //Append the <li> elements to the <ul> element
+        astronautList.appendChild(listItem);
+    });
+}
 
 // Fetch data from the external API
 
 // Hint: Use fetch() to make an HTTP request to "http://api.open-notify.org/astros.json"
 // Hint: Use .then() to process the response and convert it to JSON
 // Hint: Call the displayAstronauts() function with the fetched data
-// Hint: Use .catch() to handle any errors that occur during the fetch process
+// Hint: Use .
+
+//fetch() to make an HTTP request to "http://api.open-notify.org/astros.json"
+fetch("http://api.open-notify.org/astros.json")
+    //.then() to process the response and convert it to JSON
+    .then(response => response.json())
+    .then(data => {
+        console.log(data);
+    })
+    //catch() to handle any errors that occur during the fetch process
+    .catch(error => {
+        console.error(
+            "Error fetcching data", error
+        );
+    });
